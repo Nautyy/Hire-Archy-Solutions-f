@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/output.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon-32x32.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- themify icon -->
+    <link rel="stylesheet" type="text/css" href="css/themify-icons.css">
+    <!-- video popup -->
+    <link rel="stylesheet" type="text/css" href="css/colorbox.css">
+    <!-- swiper slider -->
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <!-- Animate Css -->
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <!-- CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+
+    </style>
+
+    <style>
+        .navbar-brand img {
+            height: 30px;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header_wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="mega_nav navbar navbar-expand-md p-0 justify-content-between navbar-click">
+                        <div class="nav_left" ">
+                            <a class=" navbar-brand" id="resetPassLogo"><img src="images/logo.png"
+                                alt="Hire-Archy"></a>
+                            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                                data-target="#mega_menu">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="bg-gray-50 ">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+
+            <div class="w-full p-6 bg-purple-300 rounded-lg shadow md:mt-0 sm:max-w-md sm:p-8 mt-10">
+                <h2 class="mb-1 text-xl font-bold leading-tight tracking-tight text-purple-800 md:text-2xl ">
+                    Change Password
+                </h2>
+                <form class="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your
+                            email</label>
+                        <input type="email" name="email" id="email"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                            placeholder="name@company.com" required="">
+                    </div>
+                    <div>
+                        <label for="originalPassword" class="block mb-2 text-sm font-medium text-gray-900 ">Original
+                            Password</label>
+                        <input type="password" name="originalPassword" id="originalPassword" placeholder="••••••••"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                            required="">
+                    </div>
+                    <div>
+                        <label for="newPassword" class="block mb-2 text-sm font-medium text-gray-900 ">New
+                            password</label>
+                        <input type="password" name="newPassword" id="newPassword" placeholder="••••••••"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                            required="">
+                    </div>
+
+                    <button type="submit" id="reset-btn"
+                        class="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Reset
+                        password</button>
+                    <p id="status"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const form = document.querySelector('form');
+        function resetBtn() {
+            const resetButton = document.getElementById('reset-btn');
+
+            resetButton.textContent = 'Reset password';
+            resetButton.disabled = false;
+            resetButton.style.cursor = 'pointer';
+            resetButton.style.opacity = '1';
+        }
+
+        document.getElementById('resetPassLogo').addEventListener('click', () => {
+            window.history.back();
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const resetButton = document.getElementById('reset-btn');
+            const email = document.querySelector('#email').value;
+            const originalPassword = document.querySelector('#originalPassword').value;
+            const newPassword = document.querySelector('#newPassword').value;
+
+            if (!email || !originalPassword || !newPassword) {
+                document.getElementById('status').textContent = 'Please fill all fields';
+                document.getElementById('status').style.color = 'red';
+                setTimeout(() => {
+                    document.getElementById('status').textContent = '';
+                }, 3000);
+                resetBtn();
+                return;
+            }
+            resetButton.textContent = 'Please wait...';
+            resetButton.disabled = true;
+            resetButton.style.cursor = 'not-allowed';
+            resetButton.style.opacity = '0.7';
+            const data = {
+                email,
+                originalPassword,
+                newPassword
+            };
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify(data)
+            };
+
+            const response = await fetch('http://localhost:7777/api/auth/resetPassword', options);
+            const result = await response.json();
+
+            if (result.status === 'success') {
+                document.getElementById('status').textContent = 'Password reset successful!';
+                document.getElementById('status').style.color = 'green';
+                resetBtn();
+                setTimeout(() => {
+                    document.getElementById('status').textContent = '';
+                }, 3000);
+            } else {
+                document.getElementById('status').textContent = result.message;
+                document.getElementById('status').style.color = 'red';
+                resetBtn();
+                setTimeout(() => {
+                    document.getElementById('status').textContent = '';
+                }, 3000);
+            }
+
+        });
+    </script>
+</body>
+
+</html>

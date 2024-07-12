@@ -1,0 +1,224 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hire-Archy</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon-32x32.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- themify icon -->
+    <link rel="stylesheet" type="text/css" href="css/themify-icons.css">
+    <!-- video popup -->
+    <link rel="stylesheet" type="text/css" href="css/colorbox.css">
+    <!-- swiper slider -->
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <!-- Animate Css -->
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.min.css">
+    <style type="text/css">
+        .fancybox-margin {
+            margin-right: 0px;
+        }
+    </style>
+    <link href="css/output.css" rel="stylesheet">
+    <style>
+        .navbar-brand img {
+            height: 30px;
+            width: auto;
+        }
+
+        .navbar-toggler {
+            background-color: #303df4;
+            /* Example background color */
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-toggler .icon-bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            margin: 4px auto;
+            background-color: #f0f0f0;
+            /* Example bar color */
+        }
+
+        .navbar-toggler .sr-only {
+            display: none;
+        }
+
+        .logo img {
+            margin-top: 1rem;
+            margin-left: -0.5rem;
+            max-width: 140px;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <section>
+        <header class="header_wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="mega_nav navbar navbar-expand-md p-0 justify-content-between navbar-click">
+                            <div class="nav_left">
+                                <a class="logo" href="index.html"><img src="images/logo.png" alt="Hire-Archy"></a>
+                                <button class="navbar-toggler collapsed" type="button" onclick="goBack()">
+                                    <span class="sr-only">Back</span>
+                                    <i class="fas fa-arrow-left" style="color:white ;"></i>
+                                </button>
+                            </div>
+
+                            <script>
+                                function goBack() {
+                                    window.history.back();
+                                }
+                            </script>
+
+
+                            <div class="p-lg-0 nav_wrapper ml-auto">
+
+                                <ul class="navbar-nav m-auto collapse navbar-collapse" id="mega_menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html" target="_blank">Home</a>
+                                    </li>
+
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.html"> Contact Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="candidate-portal.html" target="_blank">Careers</a>
+                                    </li>
+                                    <li class="nav-item">
+
+                                        <div class="nav-link" class="nav_right d-lg-block d-none">
+                                            <a href="login.html" class="btn-l"><b>Login</b></a>
+                                        </div>
+                                    </li>
+
+                                    <!-- <li class="nav-item dropdown_item">
+                                    <a class="nav-link collapsed " href="#mega_blog" data-toggle="collapse">Blog</a>
+                                    <div id="mega_blog" class="dropdown_content ">
+                                        <ul class="">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="blog_details.html">Blog Details</a></li>
+                                        </ul>
+                                    </div>
+                                </li> -->
+                                    <!-- <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Contact</a>
+                                </li> -->
+
+                                </ul>
+                            </div>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+
+    <div class="font-[sans-serif] text-[#333]">
+        <div class="min-h-screen flex fle-col items-center justify-center py-6 px-4">
+            <div class="grid md:grid-cols-2 items-center gap-10 max-w-6xl w-full">
+                <div class="max-md:text-center h-full flex justify-center items-center "
+                    style="border-right: 4px solid rgb(165, 163, 163)">
+                    <h2 class="lg:text-5xl text-4xl font-extrabold lg:leading-[55px] ">
+                        Login to <br /> your account
+                    </h2>
+
+                </div>
+                <form class="space-y-6 max-w-md md:ml-auto max-md:mx-auto w-full">
+                    <h3 class="text-3xl font-extrabold mb-8 max-md:text-center">
+                        Sign in
+                    </h3>
+                    <div>
+                        <input name="email" type="email" autocomplete="email" required
+                            class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-600"
+                            placeholder="Email address" />
+                    </div>
+                    <div>
+                        <input name="password" type="password" autocomplete="current-password" required
+                            class="bg-gray-100 w-full text-sm px-4 py-3.5 rounded-md outline-blue-600"
+                            placeholder="Password" />
+                    </div>
+
+                    <div class="!mt-10">
+                        <button type="submit"
+                            class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                            Log in
+                        </button>
+                    </div>
+                    <p id="login-status"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const form = document.querySelector('form');
+        const status = document.getElementById('login-status');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const email = formData.get('email');
+            const password = formData.get('password');
+            const data = {
+                email,
+                password
+            }
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }
+            fetch('http://localhost:7777/api/auth/login', options)
+                .then(res => res.json())
+                .then(data => {
+                    console.log("DATA: ", data)
+                    if (data.status === 'success') {
+                        localStorage.setItem('token', data.token);
+                        localStorage.setItem('data', JSON.stringify(data.data));
+                        console.log(data)
+                        if (data.role === "admin")
+                            window.location.replace('admin.html');
+                        else
+                            window.location.replace('superadmin.html');
+                    } else {
+                        status.textContent = data.message
+                        status.style.color = "red";
+                        setTimeout(() => {
+                            status.textContent = "";
+                        }, 2000)
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                    status.textContent = data.err
+                    status.style.color = "red";
+                    setTimeout(() => {
+                        status.textContent = "";
+                    }, 2000)
+                })
+        });
+    </script>
+</body>
+
+</html>

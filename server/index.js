@@ -15,8 +15,11 @@ app.use("/api/*", cloudinaryConfig);
 
 app.use("/api", routes);
 
-app.listen(7777, () => {
-    console.log("Server is running on port 7777! 🚀");
+// Use the PORT environment variable provided by Render, or default to 7777 locally
+const PORT = process.env.PORT || 7777;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}! 🚀`);
     console.log("Waiting for MongoDB to connect...");
     connectDB();
 });

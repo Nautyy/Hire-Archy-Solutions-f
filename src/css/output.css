@@ -442,9 +442,9 @@ video {
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
 
-/* [hidden] {
+[hidden] {
   display: none;
-} */
+}
 
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
@@ -604,9 +604,9 @@ video {
   visibility: visible;
 }
 
-/* .collapse {
+.collapse {
   visibility: collapse;
-} */
+}
 
 .static {
   position: static;
@@ -1359,11 +1359,6 @@ video {
 .focus\:border-gray-500:focus {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
-}
-
-.focus\:border-blue-500:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(59 130 246 / var(--tw-border-opacity));
 }
 
 .focus\:bg-white:focus {

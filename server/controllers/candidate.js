@@ -53,9 +53,9 @@ export const applyForm = async (req, res) => {
                         resume: resumeUrl,
                     });
                     await form.save();
-                    console.log("Successfully submitted your form!✅\n");
+                    console.log("Successfully submitted!✅\n");
                     res.status(200).json({
-                        message: "Successfully submitted your form!✅",
+                        message: "Successfully submitted!✅",
                         data: {
                             form,
                         },

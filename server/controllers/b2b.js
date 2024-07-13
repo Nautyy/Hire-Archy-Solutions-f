@@ -21,9 +21,9 @@ export const newForm = async (req, res) => {
             channelPlaySolutions,
         });
         await form.save();
-        console.log("Successfully submitted your form!✅\n");
+        console.log("Successfully submitted!✅\n");
         res.status(200).json({
-            message: "Successfully submitted your form!✅",
+            message: "Successfully submitted!✅",
             status: "success",
         });
     } catch (error) {

@@ -5,5 +5,8 @@
     },
     "devDependencies": {
         "tailwindcss": "^3.4.3"
+    },
+    "dependencies": {
+        "browserslist": "^4.23.2"
     }
 }

@@ -78,7 +78,7 @@
                                 <th scope="col" class="px-4 py-3">Company Name</th>
                                 <th scope="col" class="px-4 py-3">Office Email</th>
                                 <th scope="col" class="px-4 py-3">Phone No.</th>
-                                <th scope="col" class="px-4 py-3">Channel Play Soln.</th>
+                                <th scope="col" class="px-4 py-3">Hirearchy Option</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>
@@ -97,7 +97,7 @@
                             <th>Company Name</th>
                             <th>Office Email</th>
                             <th>Phone No.</th>
-                            <th>Channel Play Soln.</th>
+                            <th>Hirearchy Option</th>
                         </tr>
                     </thead>
                     <tbody id="excel-tbody">
@@ -181,7 +181,7 @@
 
         function fetchContactUsForms(page = '1') {
 
-            fetch(`http://localhost:7777/api/b2b?page=${page}`, {
+            fetch(`/api/b2b?page=${page}`, {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem('token'),
                 }
@@ -213,7 +213,7 @@
                                         <td class="px-4 py-3">${form.companyName}</td>
                                         <td class="px-4 py-3">${form.officeEmail}</td>
                                         <td class="px-4 py-3">${form.phoneNo}</td>
-                                        <td class="px-4 py-3">${form.Hire - Archy}</td>
+                                        <td class="px-4 py-3">${form.hirearchyOption}</td>
                                         <td class="px-4 py-3 flex items-center justify-end">
                                            
                                             
@@ -249,7 +249,7 @@
         }
 
         async function exportTableToExcel(tableID, filename = '') {
-            const data = await fetch(`http://localhost:7777/api/b2b/allForms`, {
+            const data = await fetch(`/api/b2b/`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -257,7 +257,7 @@
             const contactUsForms = await data.json();
             const tbody = document.getElementById('excel-tbody');
             tbody.innerHTML = '';
-            contactUsForms.data.forEach((form, idx) => {
+            contactUsForms.data.forms.forEach((form, idx) => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <tr>
@@ -265,7 +265,7 @@
                         <td>${form.companyName}</td>
                         <td>${form.officeEmail}</td>
                         <td>${form.phoneNo}</td>
-                        <td>${form.Hire - Archy}</td>
+                        <td>${form.hirearchyOption}</td>
                     </tr>
                     `;
                 tbody.appendChild(tr);

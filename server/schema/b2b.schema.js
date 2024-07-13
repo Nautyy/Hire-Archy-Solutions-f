@@ -21,7 +21,7 @@ const B2B = new mongoose.Schema({
         type: String,
         required: true,
     },
-    channelPlaySolutions: {
+    hirearchyOption: {
         type: String,
         enum: [
             "Visual Merchandising & Signage",

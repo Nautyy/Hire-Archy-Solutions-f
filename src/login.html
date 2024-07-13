@@ -189,17 +189,18 @@
                 },
                 body: JSON.stringify(data)
             }
-            fetch('http://localhost:7777/api/auth/login', options)
+            fetch('/api/auth/login', options)
                 .then(res => res.json())
                 .then(data => {
                     console.log("DATA: ", data)
                     if (data.status === 'success') {
                         localStorage.setItem('token', data.token);
                         localStorage.setItem('data', JSON.stringify(data.data));
+                        localStorage.setItem('role', data.role);
                         console.log(data)
                         if (data.role === "admin")
                             window.location.replace('admin.html');
-                        else
+                        else if (data.role === "superadmin")
                             window.location.replace('superadmin.html');
                     } else {
                         status.textContent = data.message

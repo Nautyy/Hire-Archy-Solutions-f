@@ -169,7 +169,7 @@
 
         function fetchCandidateUsForms(page = '1') {
 
-            fetch(`http://localhost:7777/api/candidate?page=${page}`, {
+            fetch(`/api/candidate?page=${page}`, {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem('token'),
                 }
@@ -239,7 +239,7 @@
         }
 
         async function exportTableToExcel(tableID, filename = '') {
-            const data = await fetch(`http://localhost:7777/api/candidate/allForms`, {
+            const data = await fetch(`/api/candidate/`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -247,7 +247,7 @@
             const contactUsForms = await data.json();
             const tbody = document.getElementById('excel-tbody');
             tbody.innerHTML = '';
-            contactUsForms.data.forEach((form, idx) => {
+            contactUsForms.data.forms.forEach((form, idx) => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                 <tr class="border-b dark:border-gray-700">

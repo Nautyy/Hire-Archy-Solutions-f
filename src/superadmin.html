@@ -530,7 +530,7 @@
             window.location.href = 'add-admin.html';
         });
 
-        if (localStorage.getItem('data') && localStorage.getItem('token') && JSON.parse(localStorage.getItem('data')).role === 'superadmin') {
+        if (localStorage.getItem('data') && localStorage.getItem('token') && localStorage.getItem('role') === 'superadmin') {
             document.getElementById('admin-name').innerText = JSON.parse(localStorage.getItem('data')).name;
             console.log(JSON.parse(localStorage.getItem('data')));
         } else {

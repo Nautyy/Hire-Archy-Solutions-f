@@ -12,7 +12,9 @@ const addAdmin = async (req, res) => {
         const check = await User.findOne({ email });
         if (check) {
             return res.status(400).json({
-                message: `${role.charAt(0).toUpperCase() + role.slice(1)} with given email already exists.`,
+                message: `${
+                    role.charAt(0).toUpperCase() + role.slice(1)
+                } with given email already exists.`,
                 status: "error",
             });
         }
@@ -44,7 +46,9 @@ const addAdmin = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(`Admin/SuperAdmin with email: ${email} is trying to login.`);
+        console.log(
+            `Admin/SuperAdmin with email: ${email} is trying to login.`
+        );
         const user = await User.findOne({
             email,
         });
@@ -76,6 +80,11 @@ const login = async (req, res) => {
             message: `Successfully logged in ${user.role}.`,
             status: "success",
             token,
+            data: {
+                name: user.name,
+                email: user.email,
+            },
+            role: user.role,
         });
     } catch (err) {
         console.log("Error: ", err);
@@ -92,7 +101,9 @@ const resetPassword = async (req, res) => {
         const { email, originalPassword, newPassword } = req.body;
         console.log(req.body);
         console.log(req.user);
-        console.log(`${req.user.role} with email: ${email} is trying to reset password.`);
+        console.log(
+            `${req.user.role} with email: ${email} is trying to reset password.`
+        );
         const user = await User.findOne({
             email,
         });
@@ -126,7 +137,8 @@ const resetPassword = async (req, res) => {
     } catch (err) {
         console.log("Error: ", err);
         res.status(500).json({
-            message: "Some error occurred while resetting password for admin/superAdmin.",
+            message:
+                "Some error occurred while resetting password for admin/superAdmin.",
             status: "error",
             error: err,
         });

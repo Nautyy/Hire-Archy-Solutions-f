@@ -233,7 +233,7 @@
         });
 
 
-        if (localStorage.getItem('data') && localStorage.getItem('token') && JSON.parse(localStorage.getItem('data')).role === 'admin') {
+        if (localStorage.getItem('data') && localStorage.getItem('token') && localStorage.getItem('role') === 'admin') {
             document.getElementById('admin-name').innerText = JSON.parse(localStorage.getItem('data')).name;
             console.log(JSON.parse(localStorage.getItem('data')));
         } else {

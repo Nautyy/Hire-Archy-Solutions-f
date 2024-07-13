@@ -7,7 +7,7 @@ export const newForm = async (req, res) => {
             companyName,
             phoneNo,
             officeEmail,
-            channelPlaySolutions,
+            hirearchyOption,
         } = req.body;
         console.log(
             `Creating new form for B2B: user ${firstName} ${lastName} from ${companyName}.`
@@ -18,7 +18,7 @@ export const newForm = async (req, res) => {
             companyName,
             phoneNo,
             officeEmail,
-            channelPlaySolutions,
+            hirearchyOption,
         });
         await form.save();
         console.log("Successfully submitted!✅\n");

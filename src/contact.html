@@ -36,9 +36,6 @@
         </div>
     </div>
 
-
-
-
     <header class="header_wrap">
         <div class="container">
             <div class="row">
@@ -134,6 +131,7 @@
             </div>
         </div>
     </header>
+
     <section class="hero_area_2">
         <div class="container">
             <div class="row align-items-center">
@@ -153,7 +151,7 @@
             </div>
         </div>
     </section>
-    <section class="section-contact-banner " style="margin-top: -5rem;">
+    <section class="section-contact-banner" style="margin-top: -6rem;">
         <div class="container">
             <div class="services-banner-flex">
                 <div class="service-hero-content">
@@ -219,7 +217,7 @@
                                 <div class="form-group">
                                     <label for="email" class="form-label">Office Email<span
                                             style="color: red; font-weight: bold;">*</span></label>
-                                    <input type="text" class="form-input w-input" maxlength="256" name="officeEmail"
+                                    <input type="email" class="form-input w-input" maxlength="256" name="officeEmail"
                                         data-name="Office Email" id="officeEmail" required="" />
                                 </div>
                                 <div class="form-group">
@@ -231,10 +229,10 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group" style="flex-basis: 100%;">
-                                    <label for="hirearchyOption" class="form-label">Hire-Archy<span
+                                    <label for="channelPlay" class="form-label">Hire-Archy<span
                                             style="color: red; font-weight: bold;">*</span></label>
-                                    <select class="form-input w-input" maxlength="256" name="hirearchyOption"
-                                        data-name="hirearchyOption Solutions" id="hirearchyOption" required="">
+                                    <select class="form-input w-input" maxlength="256" name="channelPlaySolutions"
+                                        data-name="Channelplay Solutions" id="channelPlaySolutions" required="">
                                         <option value="" style="opacity: 0.4; color: gray;">-- Please select --</option>
                                         <option value="Visual Merchandising & Signage">Visual Merchandising & Signage
                                         </option>
@@ -373,8 +371,7 @@
         // when the DOM is ready
         $(document).ready(function () {
             // make an array of invalid domains
-            const invalidDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'competitor.com'];
-
+            const invalidDomains = [''];
             // get the submit button
             const submitBtn = $('.form-button');
             // on submit button click
@@ -383,7 +380,7 @@
                 e.preventDefault();
                 $('#b2b-form-status').text('');
                 const email = $('#officeEmail');
-                const option = $('#hirearchyOption');
+                const option = $('#channelPlaySolutions');
                 const firstName = $('#firstName');
                 const lastName = $('#lastName');
                 const companyName = $('#companyName');
@@ -418,7 +415,7 @@
                 else {
                     // allow form submission
                     console.log("Valid form");
-                    const res = await fetch('/api/b2b', {
+                    const res = await fetch('http://localhost:7777/api/b2b', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -429,7 +426,7 @@
                             companyName: companyName.val(),
                             phoneNo: phoneNo.val(),
                             officeEmail: email.val(),
-                            hirearchyOption: option.val()
+                            channelPlaySolutions: option.val()
                         })
                     });
                     const body = await res.json();
